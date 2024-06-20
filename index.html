@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" an-app>
+<!-- the an-app attribute is called a 'directive', everything within it will be controlled by angular, this can be put on the body, or any other area where you want controlled by angular -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>TheNetNinja Angular Playlist</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <!-- Angular Scripts -->
+  <script src="app/lib/angular.min.js"></script>
+</head>
+
+<body>
+  <h1>View down below</h1>
+  <h4>General notes on Angular:</h4>
+  <ul>
+    <li>While it's generally better to put JS at the end of the body, you want Angular to be placed in the head.</li>
+  </ul>
+  <h4>Some notes on MCV:</h4>
+  <ul>
+    <li><strong>MODEL</strong> is the data, which can be a JSON file, database data, etc.</li>
+    <li><strong>VIEW</strong> is used to display content & data in browser</li>
+    <ul>
+      <li>Use Expressions to insert data into views: <code>&lt;html tag&gt; {{ data }} &lt;/html tag&gt;</code></li>
+    </ul>
+    <li><strong>CONTROLLER</strong> is like the bridge between the <em>MODEL</em> and the <em>VIEW</em>, controlling the
+      interaction, like a button click for example.</li>
+    <li>You may hear of MCV refered to MCW, the 'W' meaning 'Whatever'. The underlying principle exactly much the same,
+      just a separation of concerns.</li>
+  </ul>
+
+  <h4>Way Data Binding</h4>
+  <p>Value entered will be bound to "favMeat", the model of "favMeat" can be displayed via expression, like this:
+    <code></code></p>
+  <input type="text" ng-model="favMeat" placeholder="enter your fav meat" />
+  <p>Your fav meat is: {{favMeat}}</p>
+  <main ng-view>
+    <!-- When a user types /contact.html, dynamically inject the contact.html view -->
+    <!-- When a user types /about.html, dynamically inject the about.html view -->
+  </main>
+  <!-- <script src="script.js"></script> -->
+</body>
+
+</html>
