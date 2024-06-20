@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" an-app>
+<html lang="en" ng-app>
 <!-- the an-app attribute is called a 'directive', everything within it will be controlled by angular, this can be put on the body, or any other area where you want controlled by angular -->
 
 <head>
@@ -22,19 +22,55 @@
     <li><strong>MODEL</strong> is the data, which can be a JSON file, database data, etc.</li>
     <li><strong>VIEW</strong> is used to display content & data in browser</li>
     <ul>
-      <li>Use Expressions to insert data into views: <code>&lt;html tag&gt; {{ data }} &lt;/html tag&gt;</code></li>
+      <li>Use Expressions to insert data into views: <code>&lt;html tag&gt; <code ng-non-bindable>{{data}}</code>  &lt;/html tag&gt;</code></li>
     </ul>
-    <li><strong>CONTROLLER</strong> is like the bridge between the <em>MODEL</em> and the <em>VIEW</em>, controlling the
-      interaction, like a button click for example.</li>
+    <li><strong>CONTROLLER</strong> is like the bridge between the <em>MODEL</em> and the <em>VIEW</em>, controlling the interaction, like a button click for example.</li>
     <li>You may hear of MCV refered to MCW, the 'W' meaning 'Whatever'. The underlying principle exactly much the same,
       just a separation of concerns.</li>
   </ul>
 
   <h4>Way Data Binding</h4>
-  <p>Value entered will be bound to "favMeat", the model of "favMeat" can be displayed via expression, like this:
-    <code></code></p>
+  <p>Value entered will be bound to "favMeat", the model of "favMeat" can be displayed via expression <code ng-non-bindable>{{favMeat}}</code>, like this:</p>
   <input type="text" ng-model="favMeat" placeholder="enter your fav meat" />
   <p>Your fav meat is: {{favMeat}}</p>
+
+
+  <h4>Introduction to Directives</h4>
+    <p><code>ng-app</code> and <code>ng-model</code> are both examples of directives. For list of other built in directives, <a href="https://docs.angularjs.org/api/ng/directive/ngClassOdd#!" target="_blank">click here</a></p>
+
+  <h4>Expressions</h4>
+  <p>You can do more than just display data values, you can also do javascript functions with much less code, like math for example:</p> 
+  <ul>
+    <li><code ng-non-bindable>{{5 / 5}} = </code>{{5 / 5}}</li>
+    <li><code ng-non-bindable>{{5 * 5}} = </code>{{5 * 5}}</li>
+    <li><code ng-non-bindable>{{5 + 5}} = </code>{{5 + 5}}</li>
+    <li><code ng-non-bindable>{{5 - 5}} = </code>{{5 - 5}}</li>
+    <li><code ng-non-bindable>{{5 - 5 + 3 + 2}} = </code>{{5 - 5 + 3 + 2}}</li>
+  </ul>
+
+  <p>You can even do expressions that combine models into one expression, such as <code ng-non-bindable>{{foo + bar}}</code>.</p>
+
+  <p>You can do this with much more complex data as well, like if you had a <em>'user'</em> model, with a <em>'name'</em> property, you could make <code ng-non-bindable>{{user.name}}</code> to display the user name.</p>
+  <div ng-init="numbers=[1,2,3,4]">
+    <p>Here we have <code ng-non-bindable>&lt;div ng-init="numbers=[1,2,3,4]"&gt;&lt;/div&gt;</code>, and we can call that data by using array expressions, like this:</p>
+    <ul>
+      <li><code ng-non-bindable>{{numbers[0]}}</code> = {{numbers[0]}} since that is the first number in the array.</li>
+      <li><code ng-non-bindable>{{numbers[0] + numbers[3]}}</code> = {{numbers[0] + numbers[3]}} The values added together.</li>
+    </ul>
+  </div>
+  <div ng-init="meats=['pork','chicken','beef','bacon']">
+    <p>This one is a little different <code ng-non-bindable>&lt;div ng-init="meats=['pork','chicken','beef','bacon']"&gt;&lt;/div&gt;</code>, and you can do this this:</p>
+    <ul>
+      <li><code ng-non-bindable>I like {{meats[0]}}</code> = I like {{meats[0]}}</li>
+      <li><code ng-non-bindable>I like {{meats[1]}}, but I LOVE {{meats[3]}}</code> = I like {{meats[1]}}, but I LOVE {{meats[3]}}</li>
+    </ul>
+  </div>
+  <div ng-init="color='orange'">
+    <p>This is also handy for naming attributes <code ng-non-bindable>&lt;div ng-init="color='orange'"&gt;&lt;/div&gt;</code>, and you can do this this:</p>
+    <ul>
+      <li><code ng-non-bindable>&lt;p class="{{color}}"&gt;&lt;/p&gt;</code> = <code>&lt;p class="{{color}}"&gt;&lt;/p&gt;</code>, which of course will output this: <p class="{{color}}">Colored Text</p></li>
+    </ul>
+  </div>
   <main ng-view>
     <!-- When a user types /contact.html, dynamically inject the contact.html view -->
     <!-- When a user types /about.html, dynamically inject the about.html view -->
